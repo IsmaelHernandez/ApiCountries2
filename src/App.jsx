@@ -7,9 +7,11 @@ function App() {
   const [countries, setCountries] = useState();
 
   useEffect(() => {
-    const URL = "https://restcountries.com/v3.1/all";
-    axios
-      .get(URL)
+    const URL = "https://restcountries.com/v3.1/lang/spanish";
+    axios.get(URL)
+        //todos los paises inicien con b hace el llamado y hago el filtro
+        // const starWithB = res.data.filter(e => e.name.common.startsWith('B'))
+        // setCountries(starWithB)
       .then((res) => setCountries(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -18,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Countries</h1>
       <div className="divContainer">
         {countries?.map((country) => (
           <CardCountries
